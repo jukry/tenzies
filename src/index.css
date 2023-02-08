@@ -1,0 +1,32 @@
+:root {
+    /* COLORS */
+    --clr-bg: hsl(203, 65%, 12%);
+    --clr-btn: hsl(248, 100%, 60%);
+    --clr-accent: hsl(144, 71%, 62%);
+
+    /* FONTS */
+    --ff-primary: "Open sans", sans-serif;
+    --fw-normal: 400;
+    --fw-bold: 700;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background-color: var(--clr-bg);
+    height: 500px;
+    width: 500px;
+    padding: 2em;
+}
+.gameboard {
+    background-color: white;
+    height: 100%;
+    border-radius: 10px;
+}
