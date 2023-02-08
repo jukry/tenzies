@@ -5,18 +5,7 @@ export default function Game() {
     const [dice, setDice] = useState(() => getArray())
     const [count, setCount] = useState(0)
 
-    // function to return random array of 10 numbers between 1-6
-    /* function getArray() {
-        let arr = []
-        for (let i = 0; i < 10; i++) {
-            arr.push({
-                num: Math.ceil(Math.random() * 6),
-                id: i,
-            })
-        }
-        return arr
-    } */
-
+    // function to return array of 10 objects with randon numbers, id and frozen boolean
     function getArray() {
         let arr = []
         for (let i = 0; i < 10; i++) {
@@ -29,26 +18,35 @@ export default function Game() {
         return arr
     }
 
-    /* console.log(dice) */
-    // render dice to board with key, id and classname
-    /* const renderDice = dice.map((item, index) => (
-        <div key={index} id={index} className={`key${index} dice`}>
-            {item}
-        </div>
-    )) */
-
+    /* renderDice function, renders dice to DOM */
     const renderDice = dice.map((item) => (
-        <div key={item.id} className={`key${item.id} dice`}>
+        <div
+            onClick={() => handleClick(item.id)}
+            key={item.id}
+            id={item.id}
+            className={`key${item.id} dice ${item.frozen ? "active" : ""}`} // if frozen, add .active styling
+        >
             {item.num}
         </div>
     ))
+
+    function handleClick(id) {
+        setDice((prevState) => {
+            return prevState.map((item) => {
+                // if objects id matches clicked id, spread item and change frozen status to opposite
+                return item.id === id ? { ...item, frozen: !item.frozen } : item
+            })
+        })
+    }
 
     return (
         <section className="dices">
             {/* state tester */}
             <button onClick={() => setCount(count + 1)}>Testeri {count}</button>
             {renderDice}
-            <button className="roll-btn">Roll</button>
+            <button className="roll-btn" onClick={() => setDice(getArray)}>
+                Roll
+            </button>
         </section>
     )
 }

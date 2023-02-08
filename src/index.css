@@ -84,3 +84,6 @@ header {
 .roll-btn:active {
     background-color: var(--clr-btn-hover);
 }
+.active {
+    background-color: var(--clr-accent);
+}
