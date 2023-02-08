@@ -26,6 +26,7 @@ export default function Game() {
             {/* state tester */}
             <button onClick={() => setCount(count + 1)}>Testeri {count}</button>
             {renderDice}
+            <button className="roll-btn">Roll</button>
         </section>
     )
 }
