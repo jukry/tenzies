@@ -5,6 +5,7 @@ export default function Game() {
     const [dice, setDice] = useState(() => getArray())
     const [count, setCount] = useState(0)
 
+    // function to return random array of 10 numbers between 1-6
     function getArray() {
         let arr = []
         for (let i = 0; i < 10; i++) {
@@ -12,13 +13,19 @@ export default function Game() {
         }
         return arr
     }
-    console.log(count)
+
+    // render dice to board with key, id and classname
+    const renderDice = dice.map((item, index) => (
+        <div key={index} id={index} className={`key${index} dice`}>
+            {item}
+        </div>
+    ))
 
     return (
-        <section>
+        <section className="dices">
             {/* state tester */}
             <button onClick={() => setCount(count + 1)}>Testeri {count}</button>
-            <h1>Game</h1>
+            {renderDice}
         </section>
     )
 }
