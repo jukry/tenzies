@@ -1,9 +1,10 @@
 import { useState } from "react"
+import Gameboard from "./Components/Gameboard"
 
 function App() {
     return (
         <main className="container">
-            <section className="gameboard"></section>
+            <Gameboard />
         </main>
     )
 }
