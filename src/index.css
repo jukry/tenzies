@@ -18,15 +18,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: var(--ff-primary);
+    font-size: 18px;
 }
 .container {
+    margin: 0 0.5em;
     background-color: var(--clr-bg);
-    height: 500px;
-    width: 500px;
+    max-height: 500px;
+    max-width: 500px;
     padding: 2em;
 }
 .gameboard {
     background-color: white;
     height: 100%;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    gap: 1em;
+}
+header {
+    text-align: center;
+    padding: 0 2em;
 }
