@@ -39,12 +39,23 @@ export default function Game() {
         })
     }
 
+    function rollDice() {
+        setDice((prevState) => {
+            return prevState.map((die) => {
+                // if die.frozen == true, dont roll new number
+                return die.frozen
+                    ? die
+                    : { ...die, num: Math.ceil(Math.random() * 6) }
+            })
+        })
+    }
+
     return (
         <section className="dices">
             {/* state tester */}
             <button onClick={() => setCount(count + 1)}>Testeri {count}</button>
             {renderDice}
-            <button className="roll-btn" onClick={() => setDice(getArray)}>
+            <button className="roll-btn" onClick={rollDice}>
                 Roll
             </button>
         </section>
