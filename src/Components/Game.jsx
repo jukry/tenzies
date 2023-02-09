@@ -1,9 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Game() {
     // set initial value as returned array from getArray
     const [dice, setDice] = useState(() => getArray())
     const [count, setCount] = useState(0)
+    const [winnerState, setWinnerState] = useState(false)
+
+    //console.log(dice)
+    /* const winner = dice.map((item) => dice[0].num == item.num)
+    console.log(winner) */
 
     // function to return array of 10 objects with randon numbers, id and frozen boolean
     function getArray() {
@@ -50,13 +55,30 @@ export default function Game() {
         })
     }
 
+    /* Winning statement */
+
+    useEffect(() => {
+        setWinnerState(
+            dice.every((value) => {
+                return value.num === dice[0].num
+            })
+        )
+    }, [dice])
+
+    /*     console.log("winner =", winner)
+     */ console.log("winnerState =", winnerState)
+
+    function handleButton() {
+        winnerState ? setDice(getArray()) : rollDice()
+    }
+
     return (
         <section className="dices">
             {/* state tester */}
             <button onClick={() => setCount(count + 1)}>Testeri {count}</button>
             {renderDice}
-            <button className="roll-btn" onClick={rollDice}>
-                Roll
+            <button className="roll-btn" onClick={handleButton}>
+                {winnerState ? "Play Again" : "Roll"}
             </button>
         </section>
     )
