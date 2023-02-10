@@ -1,11 +1,14 @@
 # Tenzies game made in React
 
 This is the capstone project of Scrimbas Learn React for Free -course.
+I made it my own way as challenge and I was able to complete it.
 
 ## Technologies used
 
+<div style="display:flex;">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Js" width="50px" height="50px"/>
 <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg" alt="Vite" width="50px" height="50px"/>
+</div>
 
 ### Description
 
