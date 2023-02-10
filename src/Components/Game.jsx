@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Confetti from "react-confetti"
 
 export default function Game() {
     // set initial value as returned array from getArray
@@ -80,6 +81,14 @@ export default function Game() {
 
     return (
         <section className="dices">
+            {winnerState ? (
+                <Confetti
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                />
+            ) : (
+                ""
+            )}
             {renderDice}
             <button className="roll-btn" onClick={handleButton}>
                 {winnerState ? "Play Again" : "Roll"}
