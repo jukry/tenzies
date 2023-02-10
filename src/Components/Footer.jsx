@@ -1,7 +1,9 @@
 export default function Footer() {
     return (
-        <div>
-            <h1>Footer</h1>
-        </div>
+        <footer>
+            <p>
+                Made by <a href="https://github.com/jukry">Jukry</a> in 2023
+            </p>
+        </footer>
     )
 }
