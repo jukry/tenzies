@@ -80,3 +80,12 @@ header {
 .active {
     background-color: var(--clr-accent);
 }
+.score {
+    grid-column: 1 / 3;
+    font-size: 1.5em;
+}
+.hiscore {
+    grid-column: 4 / 6;
+    font-size: 1.5em;
+    text-align: right;
+}

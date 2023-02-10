@@ -3,12 +3,11 @@ import { useState, useEffect } from "react"
 export default function Game() {
     // set initial value as returned array from getArray
     const [dice, setDice] = useState(() => getArray())
-    const [count, setCount] = useState(0)
     const [winnerState, setWinnerState] = useState(false)
-
-    //console.log(dice)
-    /* const winner = dice.map((item) => dice[0].num == item.num)
-    console.log(winner) */
+    const [score, setScore] = useState(0)
+    const [highScore, setHighScore] = useState(
+        parseInt(localStorage.getItem("hiscore")) || 0
+    )
 
     // function to return array of 10 objects with randon numbers, id and frozen boolean
     function getArray() {
@@ -53,10 +52,10 @@ export default function Game() {
                     : { ...die, num: Math.ceil(Math.random() * 6) }
             })
         })
+        setScore((oldVal) => oldVal + 1)
     }
 
     /* Winning statement */
-
     useEffect(() => {
         setWinnerState(
             dice.every((value) => {
@@ -65,21 +64,28 @@ export default function Game() {
         )
     }, [dice])
 
-    /*     console.log("winner =", winner)
-     */ console.log("winnerState =", winnerState)
-
     function handleButton() {
-        winnerState ? setDice(getArray()) : rollDice()
+        if (highScore == 0 && winnerState) {
+            setHighScore(score)
+        } else if (score < highScore && winnerState) {
+            setHighScore(score)
+        }
+        winnerState ? [setDice(getArray()), setScore(0)] : rollDice()
     }
+
+    useEffect(() => {
+        console.log("set higiscore")
+        localStorage.setItem("hiscore", parseInt(highScore))
+    }, [highScore])
 
     return (
         <section className="dices">
-            {/* state tester */}
-            <button onClick={() => setCount(count + 1)}>Testeri {count}</button>
             {renderDice}
             <button className="roll-btn" onClick={handleButton}>
                 {winnerState ? "Play Again" : "Roll"}
             </button>
+            <div className="score">Rolls: {score}</div>
+            <div className="hiscore">Best: {highScore}</div>
         </section>
     )
 }
